@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+</head>
+<body class="add-container">
+<th:block th:include="/header"></th:block>
+
+<form  th:object="${productForm}" th:action="@{/addProduct}" method="POST" enctype="multipart/form-data">
+<table class="table" >
+	<tr>
+	<td>Code:</td>
+	<td><input type="text" th:field="*{id}" /> </td>
+	<td> <span class="error-message" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">..</span> </td>
+	</tr>
+
+	<tr>
+	<td>Name Product:</td>
+	<td><input type="text" th:field="*{nameProduct}" /> </td>
+	<td> <span class="error-message" th:if="${#fields.hasErrors('nameProduct')}" th:errors="*{nameProduct}">..</span> </td>
+	</tr>
+	
+	<tr>
+	<td>Price:</td>
+	<td><input type="text" th:field="*{price}" /> </td>
+	<td> <span class="error-message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">..</span> </td>
+	</tr>
+	
+	<tr>
+	<td>Upload image:</td>
+	<td><input type="file" th:field="*{fileData}" /> </td>
+	<td> <span class="error-message" th:if="${#fields.hasErrors('fileData')}" th:errors="*{fileData}">..</span> </td>
+	</tr>
+	
+	<tr>
+	<td>Quantity:</td>
+	<td><input type="text" th:field="*{quantity}" /> </td>
+	<td> <span class="error-message" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">..</span> </td>
+	</tr>
+	<tr>
+	<td></td>
+	 <td><input class="button-add" type="submit" value="Create" />  </td> </tr>
+</table>
+</form>
+<th:block th:include="/footer"></th:block>
+</body>
+</html>

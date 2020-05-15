@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+
+<th:block th:include="/header"></th:block>
+	<div class="view-container"  th:each="proInfor:${listProduct}">
+		<ul class="viewList">
+			<li><img class="product-image" th:src="@{/imageProduct(id=${proInfor.id})}" width="100"></li>
+			<li>ID:<span th:field="${proInfor.id}"></span>
+			</li>
+			<li>Name Product: <span th:utext="${proInfor.nameProduct}"></span></li>
+			<li>Price: <span th:utext="${proInfor.price}"></span></li>
+			<li>quantity: <span th:utext="${proInfor.quantity}"></span></li>
+			<li><a class="button-view" th:href="@{/updateProduct(id=${proInfor.id})}">Update</a></li>
+			<li><a class="button-view" th:href="@{/deleteProduct(id=${proInfor.id})}"
+				onclick="return confirm('Do you want delete Product?')">Delete</a></li>
+		</ul>
+	</div>
+
+<th:block th:include="/footer"></th:block>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+</head>
+<body class="search-container">
+<th:block th:include="/header"></th:block>
+
+<form class="search" th:action="@{/searchProduct}" th:object="${nameProduct}" method="POST">
+<input class="input-search" type="search" th:field="*{nameProduct}" placeholder="Search product"/>
+<input class="button-search" type="submit" value="Go">
+</form>
+
+<th:block th:include="/footer"></th:block>
+
+</body>
+</html>
